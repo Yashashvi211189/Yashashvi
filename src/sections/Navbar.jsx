@@ -102,7 +102,7 @@ const Navbar = () => {
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             <img
-              src={isOpen ? "assets/close.svg" : "assets/menu.svg"}
+              src={isOpen ? "/star-wars-portfolio/assets/close.svg" : "/star-wars-portfolio/assets/menu.svg"}
               className="w-6 h-6"
               alt="toggle"
             />

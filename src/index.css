@@ -229,15 +229,15 @@ html {
 .field-input-focus {
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20;
 }
-@font-format {
+@font-face {
   font-family: 'StarJedi';
-  src: url('/fonts/StarJedi.woff2') format('woff2');
+  src: url('/star-wars-portfolio/fonts/StarJedi.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
-@font-format {
+@font-face {
   font-family: 'StarJ';
-  src: url('/fonts/Starjout.ttf') format('woff2');
+  src: url('/star-wars-portfolio/fonts/Starjout.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
