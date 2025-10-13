@@ -101,10 +101,13 @@ body {
 html {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
-/* Better touch targets for mobile */
+/* Mobile-specific optimizations */
 @media (max-width: 768px) {
+  /* Better touch targets for mobile */
   .nav-link,
   button,
   a {
@@ -113,6 +116,35 @@ html {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    /* Improve touch responsiveness */
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+    touch-action: manipulation;
+  }
+  
+  /* Optimize scrolling performance */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Enable hardware acceleration for smooth scrolling */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+  }
+  
+  /* Prevent zoom on input focus */
+  input, textarea, select {
+    font-size: 16px;
+  }
+  
+  /* Improve section spacing for mobile */
+  section {
+    scroll-margin-top: 80px; /* Account for fixed navbar */
+  }
+  
+  /* Optimize 3D model container */
+  canvas {
+    will-change: transform;
+    transform: translateZ(0);
   }
 }
 
