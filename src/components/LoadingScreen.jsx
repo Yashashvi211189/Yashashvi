@@ -15,9 +15,15 @@ const LoadingScreen = ({ onLoadComplete }) => {
   ];
 
   useEffect(() => {
+    // Faster loading for mobile devices
+    const isMobile = window.innerWidth < 768;
+    const loadingSpeed = isMobile ? 100 : 150; // Faster on mobile
+    const maxLoadTime = isMobile ? 2500 : 4000; // Shorter on mobile
+    
     const interval = setInterval(() => {
       setProgress((prev) => {
-        const newProgress = Math.min(prev + Math.random() * 15, 100);
+        const increment = isMobile ? Math.random() * 20 + 10 : Math.random() * 15;
+        const newProgress = Math.min(prev + increment, 100);
         
         // Update loading text based on progress
         const messageIndex = Math.floor((newProgress / 100) * (loadingMessages.length - 1));
@@ -27,17 +33,17 @@ const LoadingScreen = ({ onLoadComplete }) => {
           clearInterval(interval);
           setTimeout(() => {
             onLoadComplete();
-          }, 500);
+          }, isMobile ? 200 : 500); // Faster completion on mobile
         }
         
         return newProgress;
       });
-    }, 150); // Faster loading
+    }, loadingSpeed);
 
-    // Fallback timeout to ensure loading completes
+    // Shorter fallback timeout for mobile
     const fallbackTimeout = setTimeout(() => {
       onLoadComplete();
-    }, 4000); // Maximum 4 seconds
+    }, maxLoadTime);
 
     return () => {
       clearInterval(interval);
@@ -123,9 +129,9 @@ const LoadingScreen = ({ onLoadComplete }) => {
           {loadingText}
         </motion.p>
 
-        {/* Animated Stars */}
+        {/* Animated Stars - Reduced for mobile performance */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(50)].map((_, i) => (
+          {[...Array(window.innerWidth < 768 ? 20 : 50)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-white rounded-full"

@@ -19,20 +19,29 @@ export default defineConfig(({ command }) => ({
     terserOptions: {
       compress: {
         drop_console: true, // Remove console.logs in production
-        drop_debugger: true
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.warn'], // Remove specific console methods
+        passes: 2 // Multiple optimization passes
+      },
+      mangle: {
+        safari10: true // Better Safari support
       }
     },
     rollupOptions: {
       output: {
         manualChunks: {
-          // Core React chunks
+          // Core React chunks - smaller
           vendor: ['react', 'react-dom'],
-          // 3D rendering chunks
+          // 3D rendering chunks - separate for lazy loading
           three: ['three', '@react-three/fiber', '@react-three/drei'],
-          // Animation chunks
+          // Animation chunks - separate
           motion: ['framer-motion'],
-          // Lazy loaded sections
-          sections: ['./src/sections/About.jsx', './src/sections/Experience.jsx', './src/sections/Work.jsx', './src/sections/Contact.jsx']
+          // Each section as separate chunk for better loading
+          about: ['./src/sections/About.jsx'],
+          resume: ['./src/sections/Resume.jsx'],
+          experience: ['./src/sections/Experience.jsx'],
+          work: ['./src/sections/Work.jsx'],
+          contact: ['./src/sections/Contact.jsx']
         },
         // Optimize chunk naming for better caching
         chunkFileNames: (chunkInfo) => {
@@ -44,10 +53,12 @@ export default defineConfig(({ command }) => ({
     // Performance settings
     cssCodeSplit: true,
     sourcemap: false,
-    // Optimize chunk sizes
-    chunkSizeWarningLimit: 1000,
-    // Enable asset inlining for small files
-    assetsInlineLimit: 4096
+    // Optimize chunk sizes for mobile
+    chunkSizeWarningLimit: 800,
+    // Inline smaller assets
+    assetsInlineLimit: 2048, // Reduced for faster parsing
+    // Target modern browsers for smaller bundles
+    target: ['es2020', 'chrome80', 'firefox78', 'safari14']
   },
   // Optimize for better caching
   server: {

@@ -12,10 +12,10 @@ const Resume = () => {
         <div className="absolute bottom-20 right-1/4 w-1.5 h-1.5 bg-coral rounded-full animate-pulse delay-1000"></div>
       </div>
 
-      {/* Holographic Grid Background */}
+      {/* Holographic Grid Background - Reduced for mobile */}
       <div className="absolute inset-0 opacity-5">
-        <div className="grid grid-cols-12 h-full">
-          {[...Array(144)].map((_, i) => (
+        <div className={`grid ${window.innerWidth < 768 ? 'grid-cols-8' : 'grid-cols-12'} h-full`}>
+          {[...Array(window.innerWidth < 768 ? 64 : 144)].map((_, i) => (
             <motion.div
               key={i}
               className="border border-aqua/20"
@@ -24,9 +24,9 @@ const Resume = () => {
                 borderColor: ['rgba(51, 194, 204, 0.1)', 'rgba(51, 194, 204, 0.3)', 'rgba(51, 194, 204, 0.1)']
               }}
               transition={{ 
-                duration: 3, 
+                duration: window.innerWidth < 768 ? 4 : 3, 
                 repeat: Infinity, 
-                delay: i * 0.02,
+                delay: i * (window.innerWidth < 768 ? 0.03 : 0.02),
                 ease: "easeInOut"
               }}
             />

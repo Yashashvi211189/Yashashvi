@@ -33,10 +33,11 @@ const Hero = () => {
         checkMobile()
         window.addEventListener('resize', checkMobile)
         
-        // Delay 3D model loading to prioritize text content
+        // Delay 3D model loading to prioritize text content - longer delay on mobile
+        const modelDelay = isMobile ? 2000 : 1000;
         const modelTimer = setTimeout(() => {
             setShowModel(true)
-        }, 1000)
+        }, modelDelay)
         
         return () => {
             window.removeEventListener('resize', checkMobile)
@@ -44,11 +45,11 @@ const Hero = () => {
         }
     }, [])
 
-    // Fixed positioning and scaling for mobile
+    // Fixed positioning and scaling for mobile with performance optimization
     const mobileModelConfig = {
         position: [1.2, -1.8, 0],
         rotation: [0, Math.PI, 0],
-        scale: 0.015
+        scale: 0.012 // Reduced for better performance
     }
 
     const desktopModelConfig = {

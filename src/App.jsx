@@ -114,11 +114,14 @@ const App = () => {
     setIsLoading(false);
   };
   
-  // Fallback to ensure site loads even if loading screen has issues
+  // Fallback to ensure site loads even if loading screen has issues - shorter on mobile
   useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    const fallbackTime = isMobile ? 3000 : 5000; // Shorter timeout on mobile
+    
     const fallback = setTimeout(() => {
       setIsLoading(false);
-    }, 5000); // Force load after 5 seconds max
+    }, fallbackTime);
     
     return () => clearTimeout(fallback);
   }, []);

@@ -12,7 +12,7 @@ const ParallaxBackground = () => {
   const isDev = import.meta.env.DEV;
   const baseUrl = isDev ? '' : '/Yashashvi';
   
-  console.log('ParallaxBackground - Environment:', { isDev, baseUrl }); // Debug log
+  // Environment detection for production optimization
 
   return (
     <section className="absolute inset-0 z-0 bg-black/40">
