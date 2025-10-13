@@ -17,6 +17,7 @@ const LoadingScreen = ({ onLoadComplete }) => {
   useEffect(() => {
     // Much faster loading for mobile devices (no 3D model to load)
     const isMobile = window.innerWidth < 768;
+    console.log('LoadingScreen - Mobile detected:', isMobile, 'Screen width:', window.innerWidth);
     const loadingSpeed = isMobile ? 80 : 150; // Much faster on mobile
     const maxLoadTime = isMobile ? 1800 : 4000; // Much shorter on mobile
     

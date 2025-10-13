@@ -3,6 +3,7 @@ import Navbar from './sections/Navbar.jsx';
 import Hero from './sections/Hero.jsx';
 import StarfieldBackground from './components/StarfieldBackground.jsx';
 import LoadingScreen from './components/LoadingScreen.jsx';
+import ErrorBoundary from './components/ErrorBoundary.jsx';
 
 // Lazy load non-critical sections to reduce initial bundle size
 const About = lazy(() => import('./sections/About.jsx'));
@@ -111,6 +112,7 @@ const App = () => {
     }
   }, []);
   const handleLoadComplete = () => {
+    console.log('Loading complete, device width:', window.innerWidth);
     setIsLoading(false);
   };
   
@@ -131,15 +133,16 @@ const App = () => {
   }
 
   return (
-    <div className="relative">
-      {/* Global Starfield Background */}
-      <StarfieldBackground />
-      
-      {/* Navigation */}
-      <Navbar />
-      
-      {/* Main Content Container */}
-      <div className="relative z-10">
+    <ErrorBoundary>
+      <div className="relative">
+        {/* Global Starfield Background */}
+        <StarfieldBackground />
+        
+        {/* Navigation */}
+        <Navbar />
+        
+        {/* Main Content Container */}
+        <div className="relative z-10">
         {/* Hero Section - Keep existing 3D model and animations */}
         <section id="home" className="relative">
           <Hero />
@@ -179,8 +182,9 @@ const App = () => {
             <Contact />
           </Suspense>
         </section>
+        </div>
       </div>
-    </div>
+    </ErrorBoundary>
   );
 };
 

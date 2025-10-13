@@ -27,7 +27,9 @@ const Hero = () => {
 
     useEffect(() => {
         const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768)
+            const mobile = window.innerWidth < 768;
+            console.log('Hero - Mobile check:', mobile, 'Screen width:', window.innerWidth);
+            setIsMobile(mobile);
         }
         
         checkMobile()
