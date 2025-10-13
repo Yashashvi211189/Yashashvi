@@ -4,7 +4,7 @@ import { useFrame } from '@react-three/fiber'
 
 export function Astronaut(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/star-wars-portfolio/models/scene.gltf')
+  const { nodes, materials, animations } = useGLTF('/Yashashvi/models/scene.gltf')
   const { actions: _actions } = useAnimations(animations, group)
 
   useFrame(() => {
@@ -141,4 +141,4 @@ export function Astronaut(props) {
   )
 }
 
-useGLTF.preload('/star-wars-portfolio/models/scene.gltf')
+useGLTF.preload('/Yashashvi/models/scene.gltf')

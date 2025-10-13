@@ -13,11 +13,11 @@ const ParallaxBackground = () => {
   const [showLayers, setShowLayers] = useState(false);
   
   const imageUrls = [
-    '/star-wars-portfolio/assets/wp3614448.webp',
-    '/star-wars-portfolio/assets/mountain-3.png',
-    '/star-wars-portfolio/assets/planets.png',
-    '/star-wars-portfolio/assets/mountain-2.png',
-    '/star-wars-portfolio/assets/mountain-1.png'
+    '/Yashashvi/assets/wp3614448.webp',
+    '/Yashashvi/assets/mountain-3.png',
+    '/Yashashvi/assets/planets.png',
+    '/Yashashvi/assets/mountain-2.png',
+    '/Yashashvi/assets/mountain-1.png'
   ];
   
   useEffect(() => {

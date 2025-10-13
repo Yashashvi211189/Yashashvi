@@ -28,7 +28,7 @@ const App = () => {
     // Register service worker for caching
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/star-wars-portfolio/sw.js')
+        navigator.serviceWorker.register('/Yashashvi/sw.js')
           .then((registration) => {
             console.log('SW registered: ', registration);
             // Check for updates
@@ -53,9 +53,9 @@ const App = () => {
     // Preload critical assets
     const preloadAssets = () => {
       const criticalAssets = [
-        '/star-wars-portfolio/assets/wp3614448.webp', // Main background
-        '/star-wars-portfolio/assets/menu.svg',
-        '/star-wars-portfolio/assets/close.svg'
+        '/Yashashvi/assets/wp3614448.webp', // Main background
+        '/Yashashvi/assets/menu.svg',
+        '/Yashashvi/assets/close.svg'
       ];
       
       const promises = criticalAssets.map(asset => {

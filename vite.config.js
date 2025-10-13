@@ -12,7 +12,7 @@ export default defineConfig(({ command }) => ({
     compression({ algorithm: 'gzip' }),
     compression({ algorithm: 'brotliCompress', ext: '.br' })
   ],
-  base: command === 'build' ? '/star-wars-portfolio/' : '/',
+  base: command === 'build' ? '/Yashashvi/' : '/',
   build: {
     // Enhanced performance optimizations
     minify: 'terser',
