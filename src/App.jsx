@@ -28,7 +28,7 @@ const App = () => {
     // Register service worker for caching
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/Yashashvi/sw.js')
+        navigator.serviceWorker.register(import.meta.env.BASE_URL + 'sw.js')
           .then((registration) => {
             console.log('SW registered: ', registration);
             // Check for updates
@@ -52,10 +52,11 @@ const App = () => {
     
     // Preload critical assets
     const preloadAssets = () => {
+      const baseUrl = import.meta.env.BASE_URL;
       const criticalAssets = [
-        '/Yashashvi/assets/wp3614448.webp', // Main background
-        '/Yashashvi/assets/menu.svg',
-        '/Yashashvi/assets/close.svg'
+        baseUrl + 'assets/wp3614448.webp', // Main background
+        baseUrl + 'assets/menu.svg',
+        baseUrl + 'assets/close.svg'
       ];
       
       const promises = criticalAssets.map(asset => {
