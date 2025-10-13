@@ -44,6 +44,15 @@ function Navigation({ onLinkClick }) {
       <li className="nav-li">
         <a 
           className="nav-link" 
+          href="#resume"
+          onClick={(e) => handleLinkClick(e, 'resume')}
+        >
+          Resume
+        </a>
+      </li>
+      <li className="nav-li">
+        <a 
+          className="nav-link" 
           href="#experience"
           onClick={(e) => handleLinkClick(e, 'experience')}
         >

@@ -6,6 +6,7 @@ import LoadingScreen from './components/LoadingScreen.jsx';
 
 // Lazy load non-critical sections to reduce initial bundle size
 const About = lazy(() => import('./sections/About.jsx'));
+const Resume = lazy(() => import('./sections/Resume.jsx'));
 const Experience = lazy(() => import('./sections/Experience.jsx'));
 const Work = lazy(() => import('./sections/Work.jsx'));
 const Contact = lazy(() => import('./sections/Contact.jsx'));
@@ -145,6 +146,13 @@ const App = () => {
         <section id="about" className="relative">
           <Suspense fallback={<SectionFallback />}>
             <About />
+          </Suspense>
+        </section>
+        
+        {/* Resume Section - Lazy load */}
+        <section id="resume" className="relative">
+          <Suspense fallback={<SectionFallback />}>
+            <Resume />
           </Suspense>
         </section>
         
