@@ -122,50 +122,8 @@ const Resume = () => {
                 <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
                   Professional Resume
                 </h3>
-                <p className="text-lg text-neutral-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-                  Complete overview of my technical skills, educational background, 
-                  project experience, and professional achievements in software development.
-                </p>
               </div>
 
-              {/* Resume Details Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  className="bg-royal/20 border border-lavender/30 rounded-2xl p-4"
-                >
-                  <div className="text-2xl mb-2">🎓</div>
-                  <h4 className="text-white font-semibold mb-1">Education</h4>
-                  <p className="text-neutral-400 text-sm">Academic Background</p>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-royal/20 border border-lavender/30 rounded-2xl p-4"
-                >
-                  <div className="text-2xl mb-2">💻</div>
-                  <h4 className="text-white font-semibold mb-1">Technical Skills</h4>
-                  <p className="text-neutral-400 text-sm">Programming & Tools</p>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  className="bg-royal/20 border border-lavender/30 rounded-2xl p-4"
-                >
-                  <div className="text-2xl mb-2">🚀</div>
-                  <h4 className="text-white font-semibold mb-1">Projects</h4>
-                  <p className="text-neutral-400 text-sm">Portfolio & Work</p>
-                </motion.div>
-              </div>
 
               {/* Main Resume Button */}
               <motion.a
@@ -211,7 +169,7 @@ const Resume = () => {
                   
                   {/* Button Text */}
                   <span className="bg-gradient-to-r from-white via-aqua to-mint bg-clip-text text-transparent font-extrabold tracking-wide">
-                    DOWNLOAD RESUME
+                    RESUME
                   </span>
                   
                   {/* Arrow */}
@@ -244,20 +202,6 @@ const Resume = () => {
               </motion.a>
 
               {/* Additional Info */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="pt-6 border-t border-aqua/20"
-              >
-                <p className="text-neutral-400 text-sm mb-2">
-                  📁 PDF Format • 📄 2 Pages • 🔄 Updated December 2024
-                </p>
-                <p className="text-aqua/70 text-xs">
-                  Click to view and download my complete professional profile
-                </p>
-              </motion.div>
             </div>
           </div>
         </motion.div>
