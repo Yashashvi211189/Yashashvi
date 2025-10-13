@@ -223,13 +223,20 @@ const About = () => {
           </div>
         </div>
 
+        {/* DEBUG: Resume Section Marker */}
+        <div className="text-center mt-16 mb-4">
+          <div className="bg-red-500 text-white px-4 py-2 rounded inline-block">
+            🔍 RESUME BUTTON SHOULD BE BELOW THIS LINE 🔍
+          </div>
+        </div>
+
         {/* Resume Button - Centered */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-center mt-16"
+          className="text-center mt-8 mb-16 relative z-50"
         >
           <motion.a
             href="https://drive.google.com/file/d/1pqPO0LfGUtZaN6od_WEO3ybJblAcczKG/view?usp=sharing"
