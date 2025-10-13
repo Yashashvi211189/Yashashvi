@@ -222,6 +222,105 @@ const About = () => {
             ))}
           </div>
         </div>
+
+        {/* Resume Button - Centered */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="text-center mt-16"
+        >
+          <motion.a
+            href="https://drive.google.com/file/d/1pqPO0LfGUtZaN6od_WEO3ybJblAcczKG/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 0 30px rgba(51, 194, 204, 0.6)",
+            }}
+            whileTap={{ scale: 0.95 }}
+            className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-aqua/20 via-mint/30 to-aqua/20 border-2 border-aqua/40 rounded-full text-white font-bold text-lg hover:border-mint/60 transition-all duration-300 shadow-lg shadow-aqua/25 backdrop-blur-sm relative overflow-hidden"
+          >
+            {/* Holographic glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-aqua/10 via-mint/20 to-aqua/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full"></div>
+            
+            {/* Animated background pulse */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-aqua/5 to-mint/5 rounded-full"
+              animate={{ 
+                opacity: [0.3, 0.7, 0.3],
+                scale: [1, 1.02, 1]
+              }}
+              transition={{ 
+                duration: 2, 
+                repeat: Infinity, 
+                ease: "easeInOut"
+              }}
+            />
+            
+            <div className="relative z-10 flex items-center">
+              {/* Icon */}
+              <motion.span 
+                className="mr-3 text-2xl"
+                animate={{ 
+                  rotateY: [0, 180, 360],
+                }}
+                transition={{ 
+                  duration: 3, 
+                  repeat: Infinity, 
+                  ease: "linear"
+                }}
+              >
+                📄
+              </motion.span>
+              
+              {/* Text */}
+              <span className="bg-gradient-to-r from-white via-aqua to-mint bg-clip-text text-transparent font-extrabold tracking-wide">
+                VIEW RESUME
+              </span>
+              
+              {/* Arrow */}
+              <motion.span 
+                className="ml-3 text-mint"
+                animate={{ x: [0, 5, 0] }}
+                transition={{ 
+                  duration: 1.5, 
+                  repeat: Infinity, 
+                  ease: "easeInOut"
+                }}
+              >
+                →
+              </motion.span>
+            </div>
+            
+            {/* Scan line animation */}
+            <motion.div
+              className="absolute inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-mint/80 to-transparent top-1/2"
+              animate={{ 
+                x: [-100, 300],
+                opacity: [0, 1, 0]
+              }}
+              transition={{ 
+                duration: 2.5, 
+                repeat: Infinity, 
+                ease: "linear"
+              }}
+            />
+          </motion.a>
+          
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-neutral-400 text-sm mt-4 font-medium"
+          >
+            Download my complete professional profile
+          </motion.p>
+        </motion.div>
+
       </div>
     </section>
   );

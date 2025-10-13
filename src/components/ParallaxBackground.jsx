@@ -30,10 +30,6 @@ const ParallaxBackground = () => {
             zIndex: -50
           }}
         />
-        {/* Test element to make sure the section is visible */}
-        <div className="absolute top-4 left-4 z-50 text-white bg-red-600 p-2 rounded">
-          Background Test: {isDev ? 'DEV' : 'PROD'} - {baseUrl}
-        </div>
         
         {/* Mountain Layer 3 */}
         <motion.div
