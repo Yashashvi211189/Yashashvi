@@ -9,21 +9,24 @@ const ParallaxBackground = () => {
   const mountain2Y = useTransform(x, [0, 0.5], ["20%", "30%"]);
   const mountain1Y = useTransform(x, [0, 0.5], ["10%", "10%"]);
   
-  // Simplified - show background immediately
-  const baseUrl = import.meta.env.BASE_URL || '/';
+  // Fixed paths for production and development
+  const isDev = import.meta.env.DEV;
+  const baseUrl = isDev ? '/' : '/Yashashvi/';
   
-  console.log('BASE_URL:', import.meta.env.BASE_URL); // Debug log
+  console.log('Environment:', { isDev, baseUrl, BASE_URL: import.meta.env.BASE_URL }); // Debug log
 
   return (
     <section className="absolute inset-0 bg-black/40">
       <div className="relative h-screen overflow-y-hidden">
-        {/* Background Sky */}
+        {/* Background Sky - Higher priority and more visible fallback */}
         <div
           className="absolute inset-0 w-full h-screen -z-50"
           style={{
             backgroundImage: `url(${baseUrl}assets/wp3614448.webp)`,
             backgroundPosition: "bottom",
             backgroundSize: "cover",
+            backgroundColor: '#1a1b3e', // Star Wars-like fallback color
+            minHeight: '100vh'
           }}
         />
         
@@ -34,6 +37,7 @@ const ParallaxBackground = () => {
             backgroundImage: `url(${baseUrl}assets/mountain-3.png)`,
             backgroundPosition: "bottom",
             backgroundSize: "cover",
+            backgroundColor: 'rgba(26, 27, 62, 0.8)',
             y: mountain3Y,
           }}
         />
@@ -45,6 +49,7 @@ const ParallaxBackground = () => {
             backgroundImage: `url(${baseUrl}assets/planets.png)`,
             backgroundPosition: "bottom",
             backgroundSize: "cover",
+            backgroundColor: 'rgba(30, 31, 70, 0.6)',
             x: planetsX,
           }}
         />
@@ -56,6 +61,7 @@ const ParallaxBackground = () => {
             backgroundImage: `url(${baseUrl}assets/mountain-2.png)`,
             backgroundPosition: "bottom",
             backgroundSize: "cover",
+            backgroundColor: 'rgba(35, 36, 75, 0.7)',
             y: mountain2Y,
           }}
         />
@@ -67,6 +73,7 @@ const ParallaxBackground = () => {
             backgroundImage: `url(${baseUrl}assets/mountain-1.png)`,
             backgroundPosition: "bottom",
             backgroundSize: "cover",
+            backgroundColor: 'rgba(40, 41, 80, 0.9)',
             y: mountain1Y,
           }}
         />

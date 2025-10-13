@@ -102,7 +102,9 @@ const Navbar = () => {
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             <img
-              src={isOpen ? `${import.meta.env.BASE_URL}assets/close.svg` : `${import.meta.env.BASE_URL}assets/menu.svg`}
+              src={isOpen ? 
+                `${import.meta.env.DEV ? '/' : '/Yashashvi/'}assets/close.svg` : 
+                `${import.meta.env.DEV ? '/' : '/Yashashvi/'}assets/menu.svg`}
               className="w-6 h-6"
               alt="toggle"
             />

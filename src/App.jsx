@@ -28,7 +28,8 @@ const App = () => {
     // Register service worker for caching
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register(import.meta.env.BASE_URL + 'sw.js')
+        const baseUrl = import.meta.env.DEV ? '/' : '/Yashashvi/';
+        navigator.serviceWorker.register(baseUrl + 'sw.js')
           .then((registration) => {
             console.log('SW registered: ', registration);
             // Check for updates
@@ -52,7 +53,7 @@ const App = () => {
     
     // Preload critical assets
     const preloadAssets = () => {
-      const baseUrl = import.meta.env.BASE_URL;
+      const baseUrl = import.meta.env.DEV ? '/' : '/Yashashvi/';
       const criticalAssets = [
         baseUrl + 'assets/wp3614448.webp', // Main background
         baseUrl + 'assets/menu.svg',

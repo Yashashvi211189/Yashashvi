@@ -4,7 +4,9 @@ import { useFrame } from '@react-three/fiber'
 
 export function Astronaut(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF(import.meta.env.BASE_URL + 'models/scene.gltf')
+  const isDev = import.meta.env.DEV;
+  const baseUrl = isDev ? '/' : '/Yashashvi/';
+  const { nodes, materials, animations } = useGLTF(baseUrl + 'models/scene.gltf')
   const { actions: _actions } = useAnimations(animations, group)
 
   useFrame(() => {
@@ -141,4 +143,7 @@ export function Astronaut(props) {
   )
 }
 
-useGLTF.preload(import.meta.env.BASE_URL + 'models/scene.gltf')
+// Preload based on environment
+const isDev = import.meta.env.DEV;
+const baseUrl = isDev ? '/' : '/Yashashvi/';
+useGLTF.preload(baseUrl + 'models/scene.gltf')
