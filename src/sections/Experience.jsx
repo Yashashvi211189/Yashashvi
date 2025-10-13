@@ -40,7 +40,7 @@ const Experience = () => {
     {
       title: "NCC Member",
       description: "Attended camps, achieved Grade A in C Certificate.",
-      icon: "🎖️",
+      icon: "🏆️",
       color: "text-mint"
     },
     {
@@ -48,6 +48,18 @@ const Experience = () => {
       description: "Senior Member organizing major college events.",
       icon: "🎯",
       color: "text-fuchsia"
+    },
+    {
+      title: "ACM Club Member",
+      description: "Member of Association for Computing Machinery - advancing computing as a science and profession.",
+      icon: "💻",
+      color: "text-aqua"
+    },
+    {
+      title: "Technical Sciences & Media Club",
+      description: "Member of Technical Sciences, Movies and Photography Club - exploring technology through creative media.",
+      icon: "📷",
+      color: "text-lavender"
     }
   ];
 
@@ -328,7 +340,7 @@ const Experience = () => {
               BEYOND CODE
             </h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
               {beyondCodeData.map((item, index) => (
                 <motion.div
                   key={item.title}

@@ -10,7 +10,7 @@ const About = () => {
       id: 1,
       level: "College",
       institution: "Jaypee University of Information Technology",
-      cgpa: "7 Overall",
+      cgpa: "CGPA 7.0",
       description: "Private university in Waknaghat, Himachal Pradesh",
       website: "https://www.juit.ac.in/",
       icon: "🎓",
@@ -21,7 +21,7 @@ const About = () => {
       id: 2,
       level: "12th Class",
       institution: "Silver Line Prestige School",
-      board: "CBSE",
+      board: "CBSE - 89%",
       description: "Google Reference School for Technology Integration",
       website: "https://silverlineprestigeschool.com/",
       icon: "📚",
@@ -32,7 +32,7 @@ const About = () => {
       id: 3,
       level: "10th Class",
       institution: "Ingraham Institute English Medium School",
-      board: "ICSE",
+      board: "ICSE - 89%",
       description: "English medium co-educational institution since 1966",
       website: "https://www.ingrahaminstitute.com/?page_id=329",
       icon: "📖",
@@ -45,8 +45,8 @@ const About = () => {
   const technicalArsenal = {
     "Languages": ["Java", "JavaScript", "Python", "HTML", "CSS"],
     "Frameworks": ["React.js", "Spring Boot", "Flask"],
-    "Databases": ["Firebase", "MySQL"],
-    "Tools & Platforms": ["GitHub", "Docker", "VS Code", "Postman"]
+    "Databases": ["Firebase", "MySQL", "MongoDB"],
+    "Tools & Platforms": ["GitHub", "Docker", "VS Code", "Postman", "REST API", "Cloud Technology"]
   };
 
 
