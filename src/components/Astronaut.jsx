@@ -5,7 +5,7 @@ import { useFrame } from '@react-three/fiber'
 export function Astronaut(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/models/scene.gltf')
-  const { actions } = useAnimations(animations, group)
+  const { actions: _actions } = useAnimations(animations, group)
 
   useFrame(() => {
     if (group.current) {

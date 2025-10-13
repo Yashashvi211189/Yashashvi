@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 
 const About = () => {
-  const [hoveredCard, setHoveredCard] = useState(null);
 
   // Education data
   const educationData = [
