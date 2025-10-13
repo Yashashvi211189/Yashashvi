@@ -1,12 +1,29 @@
 import { Canvas } from '@react-three/fiber'
 import HeroText from "../components/HeroText"
-import { Suspense, useState, useEffect } from "react"
+import { Suspense, useState, useEffect, lazy } from "react"
 import { OrbitControls, Environment } from "@react-three/drei"
-import { Astronaut } from "../components/Astronaut"
 import ParallaxBackground from "../components/ParallaxBackground"
+
+// Lazy load the 3D model to reduce initial bundle size
+const Astronaut = lazy(() => import('../components/Astronaut').then(module => ({ default: module.Astronaut })));
+
+// Lightweight fallback component for 3D model loading
+const ModelFallback = ({ config }) => (
+  <mesh position={config.position} rotation={config.rotation} scale={config.scale}>
+    <boxGeometry args={[0.5, 1, 0.3]} />
+    <meshStandardMaterial 
+      color="#00aaff" 
+      transparent 
+      opacity={0.3}
+      emissive="#001122"
+    />
+  </mesh>
+);
 
 const Hero = () => {
     const [isMobile, setIsMobile] = useState(false)
+    const [modelLoaded, setModelLoaded] = useState(false)
+    const [showModel, setShowModel] = useState(false)
 
     useEffect(() => {
         const checkMobile = () => {
@@ -16,7 +33,15 @@ const Hero = () => {
         checkMobile()
         window.addEventListener('resize', checkMobile)
         
-        return () => window.removeEventListener('resize', checkMobile)
+        // Delay 3D model loading to prioritize text content
+        const modelTimer = setTimeout(() => {
+            setShowModel(true)
+        }, 1000)
+        
+        return () => {
+            window.removeEventListener('resize', checkMobile)
+            clearTimeout(modelTimer)
+        }
     }, [])
 
     // Fixed positioning and scaling for mobile
@@ -57,27 +82,39 @@ const Hero = () => {
                     style={{
                         pointerEvents: isMobile ? 'none' : 'auto'
                     }}
+                    performance={{ min: 0.8 }} // Optimize for performance
+                    dpr={isMobile ? 1 : Math.min(window.devicePixelRatio, 2)} // Limit DPR for performance
                 >
                     {/* Lighting */}
                     <ambientLight intensity={isMobile ? 1.5 : 2} />
                     <directionalLight position={[10, 10, 5]} intensity={1} />
 
-                    {/* 3D Model */}
-                    <Suspense fallback={null}>
-                        <Astronaut
-                            position={modelConfig.position}
-                            rotation={modelConfig.rotation}
-                            scale={modelConfig.scale}
-                        />
-                        <Environment preset="sunset" />
-                    </Suspense>
+                    {/* 3D Model with lazy loading */}
+                    {showModel ? (
+                        <Suspense fallback={<ModelFallback config={modelConfig} />}>
+                            <Astronaut
+                                position={modelConfig.position}
+                                rotation={modelConfig.rotation}
+                                scale={modelConfig.scale}
+                                onLoad={() => setModelLoaded(true)}
+                            />
+                            <Environment 
+                                preset="sunset" 
+                                background={false} // Don't render environment background for performance
+                            />
+                        </Suspense>
+                    ) : (
+                        <ModelFallback config={modelConfig} />
+                    )}
 
                     {/* Controls - disabled on mobile for better performance */}
-                    {!isMobile && (
+                    {!isMobile && modelLoaded && (
                         <OrbitControls 
                             enableZoom={true} 
                             enableRotate={true} 
                             enablePan={false}
+                            enableDamping={true}
+                            dampingFactor={0.05}
                         />
                     )}
                 </Canvas>

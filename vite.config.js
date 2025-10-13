@@ -14,22 +14,40 @@ export default defineConfig(({ command }) => ({
   ],
   base: command === 'build' ? '/star-wars-portfolio/' : '/',
   build: {
-    // Enable compression and chunking
+    // Enhanced performance optimizations
     minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // Remove console.logs in production
+        drop_debugger: true
+      }
+    },
     rollupOptions: {
       output: {
         manualChunks: {
+          // Core React chunks
           vendor: ['react', 'react-dom'],
+          // 3D rendering chunks
           three: ['three', '@react-three/fiber', '@react-three/drei'],
-          motion: ['framer-motion']
+          // Animation chunks
+          motion: ['framer-motion'],
+          // Lazy loaded sections
+          sections: ['./src/sections/About.jsx', './src/sections/Experience.jsx', './src/sections/Work.jsx', './src/sections/Contact.jsx']
+        },
+        // Optimize chunk naming for better caching
+        chunkFileNames: (chunkInfo) => {
+          const facadeModuleId = chunkInfo.facadeModuleId ? chunkInfo.facadeModuleId.split('/').pop().replace('.jsx', '') : 'chunk';
+          return `assets/${facadeModuleId}-[hash].js`;
         }
       }
     },
-    // Enable gzip compression
+    // Performance settings
     cssCodeSplit: true,
     sourcemap: false,
-    // Increase chunk size warning limit
-    chunkSizeWarningLimit: 1000
+    // Optimize chunk sizes
+    chunkSizeWarningLimit: 1000,
+    // Enable asset inlining for small files
+    assetsInlineLimit: 4096
   },
   // Optimize for better caching
   server: {
