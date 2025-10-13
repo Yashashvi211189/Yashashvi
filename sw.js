@@ -1,16 +1,16 @@
 const CACHE_NAME = 'star-wars-portfolio-v1.2';
 const urlsToCache = [
   '/',
-  '/star-wars-portfolio/',
-  '/star-wars-portfolio/assets/wp3614448.webp',
-  '/star-wars-portfolio/assets/mountain-1.png',
-  '/star-wars-portfolio/assets/mountain-2.png',
-  '/star-wars-portfolio/assets/mountain-3.png',
-  '/star-wars-portfolio/assets/planets.png',
-  '/star-wars-portfolio/assets/menu.svg',
-  '/star-wars-portfolio/assets/close.svg',
-  '/star-wars-portfolio/models/scene.gltf',
-  '/star-wars-portfolio/models/scene.bin'
+  '/Yashashvi/',
+  '/Yashashvi/assets/wp3614448.webp',
+  '/Yashashvi/assets/mountain-1.png',
+  '/Yashashvi/assets/mountain-2.png',
+  '/Yashashvi/assets/mountain-3.png',
+  '/Yashashvi/assets/planets.png',
+  '/Yashashvi/assets/menu.svg',
+  '/Yashashvi/assets/close.svg',
+  '/Yashashvi/models/scene.gltf',
+  '/Yashashvi/models/scene.bin'
 ];
 
 // Install event - cache assets
@@ -58,7 +58,7 @@ self.addEventListener('fetch', (event) => {
         }).catch(() => {
           // Return offline fallback if available
           if (event.request.destination === 'document') {
-            return caches.match('/star-wars-portfolio/');
+            return caches.match('/Yashashvi/');
           }
         });
       })
@@ -88,8 +88,8 @@ self.addEventListener('sync', (event) => {
       // Preload critical resources in background
       caches.open(CACHE_NAME).then((cache) => {
         return cache.addAll([
-          '/star-wars-portfolio/assets/wp3614448.webp',
-          '/star-wars-portfolio/models/scene.gltf'
+          '/Yashashvi/assets/wp3614448.webp',
+          '/Yashashvi/models/scene.gltf'
         ]);
       })
     );
