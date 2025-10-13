@@ -110,6 +110,15 @@ const App = () => {
   const handleLoadComplete = () => {
     setIsLoading(false);
   };
+  
+  // Fallback to ensure site loads even if loading screen has issues
+  useEffect(() => {
+    const fallback = setTimeout(() => {
+      setIsLoading(false);
+    }, 5000); // Force load after 5 seconds max
+    
+    return () => clearTimeout(fallback);
+  }, []);
 
   if (isLoading) {
     return <LoadingScreen onLoadComplete={handleLoadComplete} />;

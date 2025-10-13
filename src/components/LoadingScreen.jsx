@@ -32,9 +32,17 @@ const LoadingScreen = ({ onLoadComplete }) => {
         
         return newProgress;
       });
-    }, 200);
+    }, 150); // Faster loading
 
-    return () => clearInterval(interval);
+    // Fallback timeout to ensure loading completes
+    const fallbackTimeout = setTimeout(() => {
+      onLoadComplete();
+    }, 4000); // Maximum 4 seconds
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(fallbackTimeout);
+    };
   }, [onLoadComplete]);
 
   return (
