@@ -75,50 +75,50 @@ const Hero = () => {
                     height: "100vh",
                     zIndex: isMobile ? 1 : 'auto'
                 }}>
-                <Canvas 
-                    camera={{ 
-                        position: isMobile ? [0, 1.5, 4] : [0, 2, 5], 
-                        fov: isMobile ? 50 : 60 
-                    }}
-                    style={{
-                        pointerEvents: isMobile ? 'none' : 'auto'
-                    }}
-                    performance={{ min: 0.8 }} // Optimize for performance
-                    dpr={isMobile ? 1 : Math.min(window.devicePixelRatio, 2)} // Limit DPR for performance
-                >
-                    {/* Lighting */}
-                    <ambientLight intensity={isMobile ? 1.5 : 2} />
-                    <directionalLight position={[10, 10, 5]} intensity={1} />
+                {/* Only render Canvas and 3D model on desktop */}
+                {!isMobile && (
+                    <Canvas 
+                        camera={{ 
+                            position: [0, 2, 5], 
+                            fov: 60 
+                        }}
+                        performance={{ min: 0.8 }}
+                        dpr={Math.min(window.devicePixelRatio, 2)}
+                    >
+                        {/* Lighting */}
+                        <ambientLight intensity={2} />
+                        <directionalLight position={[10, 10, 5]} intensity={1} />
 
-                    {/* 3D Model with lazy loading */}
-                    {showModel ? (
-                        <Suspense fallback={<ModelFallback config={modelConfig} />}>
-                            <Astronaut
-                                position={modelConfig.position}
-                                rotation={modelConfig.rotation}
-                                scale={modelConfig.scale}
-                                onLoad={() => setModelLoaded(true)}
-                            />
-                            <Environment 
-                                preset="sunset" 
-                                background={false} // Don't render environment background for performance
-                            />
-                        </Suspense>
-                    ) : (
-                        <ModelFallback config={modelConfig} />
-                    )}
+                        {/* 3D Model with lazy loading - Desktop only */}
+                        {showModel ? (
+                            <Suspense fallback={<ModelFallback config={desktopModelConfig} />}>
+                                <Astronaut
+                                    position={desktopModelConfig.position}
+                                    rotation={desktopModelConfig.rotation}
+                                    scale={desktopModelConfig.scale}
+                                    onLoad={() => setModelLoaded(true)}
+                                />
+                                <Environment 
+                                    preset="sunset" 
+                                    background={false}
+                                />
+                            </Suspense>
+                        ) : (
+                            <ModelFallback config={desktopModelConfig} />
+                        )}
 
-                    {/* Controls - disabled on mobile for better performance */}
-                    {!isMobile && modelLoaded && (
-                        <OrbitControls 
-                            enableZoom={true} 
-                            enableRotate={true} 
-                            enablePan={false}
-                            enableDamping={true}
-                            dampingFactor={0.05}
-                        />
-                    )}
-                </Canvas>
+                        {/* Controls - Desktop only */}
+                        {modelLoaded && (
+                            <OrbitControls 
+                                enableZoom={true} 
+                                enableRotate={true} 
+                                enablePan={false}
+                                enableDamping={true}
+                                dampingFactor={0.05}
+                            />
+                        )}
+                    </Canvas>
+                )}
             </figure>
         </section>
     )

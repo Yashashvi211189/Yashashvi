@@ -81,8 +81,8 @@ const HeroText = () => {
                     </motion.p>
                 </div>
             </div>
-            {/* mobile view */}
-            <div className="flex flex-col space-y-6 md:hidden"
+            {/* Mobile view - Enhanced without 3D model */}
+            <div className="flex flex-col items-center justify-center space-y-8 md:hidden min-h-screen px-4"
             style={{
                 userSelect: "none",
                 WebkitUserSelect: "none",
@@ -90,51 +90,97 @@ const HeroText = () => {
                 msUserSelect: "none"
             }}>
                 <motion.p
-                    className="text-3xl font-extrabold color: #ffdba5"
+                    className="text-lg font-extrabold text-center"
                     style={{
-                    color: "#ffdba5",
-                    fontSize: "15px , cursive",
-                    fontFamily: "Serif",
-                    lineHeight: "0.8",}}
+                        color: "#ffdba5",
+                        fontSize: "18px",
+                        fontFamily: "Serif",
+                        lineHeight: "1.2",
+                    }}
+                    initial="hidden"
+                    animate="visible"
+                    variants={variants}
+                    transition={{ delay: 0.5 }}
                 >
-                /* ..Hi, I'm Yashashvi..*/
+                    /* ..Hi, I'm Yashashvi..*/
                 </motion.p>
-                <div>
+                
+                <div className="text-center space-y-6">
                     <motion.p
-                        className="text-3xl font-bold"
+                        className="text-4xl font-bold leading-tight"
                         style={{ color: "#FFFFFF" }}
+                        initial="hidden"
+                        animate="visible"
+                        variants={variants}
+                        transition={{ delay: 0.8 }}
                     >
-                        A Developer <br/>committed to building
+                        A Developer<br/>committed to building
                     </motion.p>
-                    <motion.div>
+                    
+                    <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={variants}
+                        transition={{ delay: 1.1 }}
+                    >
                         <FlipWords
                             words={words}
-                            className="font-black text-5xl"
-                            style={{ color: "#00FFFF" }} 
+                            className="font-black text-6xl"
+                            style={{ color: "#33c2cc" }} 
                         />
                     </motion.div>
+                    
                     <motion.p
-                        className="text-2xl font-bold"
+                        className="text-3xl font-bold"
                         style={{ color: "#E0E0E0" }}
+                        initial="hidden"
+                        animate="visible"
+                        variants={variants}
+                        transition={{ delay: 1.4 }}
                     >
                         Digital Solutions
                     </motion.p>
+                    
                     <motion.p
-                    className="text-1xl font-Serif"
-                    style={{
-                        color: "#ffdba5",
-                        fontSize: "10px , cursive",
-                        fontFamily: "Serif",
-                        lineHeight: "0.8",
+                        className="text-sm leading-relaxed text-center max-w-sm mx-auto mt-8"
+                        style={{
+                            color: "#ffdba5",
+                            fontSize: "14px",
+                            fontFamily: "Serif",
+                            lineHeight: "1.4",
                         }}
+                        initial="hidden"
+                        animate="visible"
+                        variants={variants}
+                        transition={{ delay: 1.7 }}
                     >
-                    "I have brought clean responsive design, <br/>
-                    robust APIs, code reviews,<br/>
-                    and browser compatibility <br/>
-                    to my new empire." -- "Anakin"<br/>
-                        [Revenge of the Sith]
+                        "I have brought clean responsive design,<br/>
+                        robust APIs, code reviews,<br/>
+                        and browser compatibility<br/>
+                        to my new empire." -- "Anakin"<br/>
+                        <span style={{ fontSize: "12px", opacity: 0.8 }}>[Revenge of the Sith]</span>
                     </motion.p>
                     
+                    {/* Mobile CTA Button */}
+                    <motion.div
+                        className="mt-8"
+                        initial="hidden"
+                        animate="visible"
+                        variants={variants}
+                        transition={{ delay: 2.0 }}
+                    >
+                        <button
+                            onClick={() => {
+                                document.getElementById('about')?.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                            }}
+                            className="px-8 py-3 bg-gradient-to-r from-aqua/30 to-mint/30 border-2 border-aqua/50 rounded-full text-white font-bold hover:border-mint/70 transition-all duration-300 shadow-lg shadow-aqua/25"
+                        >
+                            Explore My Work ⚡
+                        </button>
+                    </motion.div>
                 </div>
             </div>
         </div>

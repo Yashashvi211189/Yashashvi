@@ -15,10 +15,10 @@ const LoadingScreen = ({ onLoadComplete }) => {
   ];
 
   useEffect(() => {
-    // Faster loading for mobile devices
+    // Much faster loading for mobile devices (no 3D model to load)
     const isMobile = window.innerWidth < 768;
-    const loadingSpeed = isMobile ? 100 : 150; // Faster on mobile
-    const maxLoadTime = isMobile ? 2500 : 4000; // Shorter on mobile
+    const loadingSpeed = isMobile ? 80 : 150; // Much faster on mobile
+    const maxLoadTime = isMobile ? 1800 : 4000; // Much shorter on mobile
     
     const interval = setInterval(() => {
       setProgress((prev) => {
