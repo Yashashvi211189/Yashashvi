@@ -46,11 +46,6 @@
 - **E-Commerce Platform**: React.js + Firebase
 - **Portfolio Platform**: Node.js + MongoDB + JWT
 
-### 🌠 Contact
-- **Location**: Ghaziabad, U.P., India
-- **Phone**: 8178437828
-- **Email**: yashashviagnihotri007@gmail.com
-
 ## 🚀 Local Development
 
 ### Prerequisites
