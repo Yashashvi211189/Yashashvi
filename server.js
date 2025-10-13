@@ -85,7 +85,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Error handling middleware
-app.use((error, req, res, next) => {
+app.use((error, req, res, _next) => {
   console.error('🚨 Server Error:', error);
   res.status(500).json({
     error: 'Internal server error',
