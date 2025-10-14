@@ -82,20 +82,24 @@ const HeroText = () => {
                 </div>
             </div>
             {/* Mobile view - Enhanced without 3D model */}
-            <div className="flex flex-col items-center justify-center space-y-8 md:hidden min-h-screen px-4"
+            <div className="flex flex-col items-center justify-center space-y-8 md:hidden min-h-screen px-4 relative z-10"
             style={{
                 userSelect: "none",
                 WebkitUserSelect: "none",
                 MozUserSelect: "none",
-                msUserSelect: "none"
+                msUserSelect: "none",
+                background: "rgba(3, 4, 18, 0.4)", // Semi-transparent overlay to enhance text readability
+                backdropFilter: "blur(2px)"
             }}>
                 <motion.p
-                    className="text-lg font-extrabold text-center"
+                    className="text-xl font-black text-center"
                     style={{
                         color: "#ffdba5",
-                        fontSize: "18px",
+                        fontSize: "20px",
                         fontFamily: "Serif",
                         lineHeight: "1.2",
+                        fontWeight: "900",
+                        textShadow: "0 0 10px rgba(255, 219, 165, 0.3)"
                     }}
                     initial="hidden"
                     animate="visible"
@@ -107,8 +111,12 @@ const HeroText = () => {
                 
                 <div className="text-center space-y-6">
                     <motion.p
-                        className="text-4xl font-bold leading-tight"
-                        style={{ color: "#FFFFFF" }}
+                        className="text-4xl font-black leading-tight"
+                        style={{ 
+                            color: "#FFFFFF",
+                            fontWeight: "900",
+                            textShadow: "0 0 15px rgba(255, 255, 255, 0.3)"
+                        }}
                         initial="hidden"
                         animate="visible"
                         variants={variants}
@@ -126,13 +134,21 @@ const HeroText = () => {
                         <FlipWords
                             words={words}
                             className="font-black text-6xl"
-                            style={{ color: "#33c2cc" }} 
+                            style={{ 
+                                color: "#33c2cc",
+                                fontWeight: "900",
+                                textShadow: "0 0 20px rgba(51, 194, 204, 0.4)"
+                            }}
                         />
                     </motion.div>
                     
                     <motion.p
-                        className="text-3xl font-bold"
-                        style={{ color: "#E0E0E0" }}
+                        className="text-3xl font-black"
+                        style={{ 
+                            color: "#E0E0E0",
+                            fontWeight: "900",
+                            textShadow: "0 0 12px rgba(224, 224, 224, 0.3)"
+                        }}
                         initial="hidden"
                         animate="visible"
                         variants={variants}
@@ -145,9 +161,11 @@ const HeroText = () => {
                         className="text-sm leading-relaxed text-center max-w-sm mx-auto mt-8"
                         style={{
                             color: "#ffdba5",
-                            fontSize: "14px",
+                            fontSize: "15px",
                             fontFamily: "Serif",
                             lineHeight: "1.4",
+                            fontWeight: "600",
+                            textShadow: "0 0 8px rgba(255, 219, 165, 0.2)"
                         }}
                         initial="hidden"
                         animate="visible"
@@ -176,7 +194,12 @@ const HeroText = () => {
                                     block: 'start'
                                 });
                             }}
-                            className="px-8 py-3 bg-gradient-to-r from-aqua/30 to-mint/30 border-2 border-aqua/50 rounded-full text-white font-bold hover:border-mint/70 transition-all duration-300 shadow-lg shadow-aqua/25"
+                            className="px-8 py-3 bg-gradient-to-r from-aqua/40 to-mint/40 border-2 border-aqua/60 rounded-full text-white font-black hover:border-mint/80 transition-all duration-300 shadow-lg shadow-aqua/30"
+                            style={{
+                                fontWeight: "900",
+                                textShadow: "0 0 10px rgba(255, 255, 255, 0.3)",
+                                backdropFilter: "blur(10px)"
+                            }}
                         >
                             Explore My Work ⚡
                         </button>

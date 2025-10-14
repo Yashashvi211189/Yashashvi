@@ -15,9 +15,9 @@ const ParallaxBackground = () => {
   // Environment detection for production optimization
 
   return (
-    <section className="absolute inset-0 z-0 bg-black/40">
+    <section className="absolute inset-0 z-0 bg-black/30">
       <div className="relative h-screen overflow-y-hidden">
-        {/* Background Sky - Test with direct URL first */}
+        {/* Background Sky - Enhanced for mobile visibility */}
         <div
           className="absolute inset-0 w-full h-screen"
           style={{
@@ -27,7 +27,9 @@ const ParallaxBackground = () => {
             backgroundRepeat: "no-repeat",
             backgroundColor: '#1a1b3e', // Star Wars-like fallback color
             minHeight: '100vh',
-            zIndex: -50
+            zIndex: -50,
+            // Better mobile visibility
+            filter: window.innerWidth < 768 ? 'brightness(1.1) contrast(1.1)' : 'none'
           }}
         />
         

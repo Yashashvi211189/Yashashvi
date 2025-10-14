@@ -169,10 +169,30 @@ html {
     animation-duration: 0.3s !important;
   }
   
-  /* Reduce complex gradients on mobile */
+  /* Enable gradients on mobile for better visual experience */
   .bg-gradient-to-br,
   .bg-gradient-to-r {
-    background: #282b4b; /* Fallback solid color */
+    /* Allow gradients on mobile for Star Wars theme */
+  }
+  
+  /* Enhance mobile background visibility */
+  .relative {
+    /* Ensure backgrounds are visible on mobile */
+  }
+  
+  /* Mobile-specific font enhancements */
+  .font-black {
+    font-weight: 900 !important;
+    letter-spacing: 0.02em;
+  }
+  
+  .font-bold {
+    font-weight: 800 !important;
+  }
+  
+  /* Mobile text shadows for better readability */
+  h1, h2, h3, .text-4xl, .text-3xl, .text-2xl {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 }
 
