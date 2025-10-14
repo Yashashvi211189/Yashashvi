@@ -88,8 +88,8 @@ const HeroText = () => {
                 WebkitUserSelect: "none",
                 MozUserSelect: "none",
                 msUserSelect: "none",
-                background: "rgba(3, 4, 18, 0.4)", // Semi-transparent overlay to enhance text readability
-                backdropFilter: "blur(2px)"
+                background: "rgba(3, 4, 18, 0.2)", // Lighter overlay to show more background
+                backdropFilter: "blur(1px)"
             }}>
                 <motion.p
                     className="text-xl font-black text-center"
